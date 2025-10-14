@@ -110,4 +110,19 @@ public class BoardTestsExp {
         assertTrue(targets.contains(board.getCell(3, 1)));
         assertTrue(targets.contains(board.getCell(3, 3)));
     }
+
+    @Test
+    public void testTargetsRoom() {
+
+    }
+
+    @Test
+    public void testTargetsOccupied() {
+
+    }
+
+    @Test
+    public void testTargetsMixed() {
+        
+    }
 }
