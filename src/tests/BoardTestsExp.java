@@ -130,7 +130,7 @@ public class BoardTestsExp {
     	//case 1
     	board.getCell(1, 1).setInRoom(true);
     	
-    	board.calcTargets(board.getCell(1, 1), 3);
+    	board.calcTargets(board.getCell(4, 1), 3);
     	Set<TestBoardCell> targets = board.getTargets();
     	assertTrue(targets.contains(board.getCell(1, 1)));
     	assertTrue(!targets.contains(board.getCell(2, 1)));
@@ -144,8 +144,8 @@ public class BoardTestsExp {
     	
     	board.calcTargets(board.getCell(1, 1), 4);
     	targets = board.getTargets();
-    	assertTrue(targets.contains(board.getCell(2, 1)));
-    	assertTrue(targets.contains(board.getCell(1, 1)));
+    	assertTrue(!targets.contains(board.getCell(2, 1))); //check not
+    	assertTrue(targets.contains(board.getCell(1, 1)));  //check yes
     }
     
     
@@ -155,7 +155,7 @@ public class BoardTestsExp {
     	board.getCell(1, 1).setOccupied(true);
     	board.calcTargets(board.getCell(0, 0), 2);
     	Set<TestBoardCell> targets = board.getTargets();
-    	assertTrue(!targets.contains(board.getCell(1, 1)));
+    	assertTrue(!targets.contains(board.getCell(0, 0)));
     	assertTrue(targets.contains(board.getCell(1, 1)));
     	
     	board.getCell(1, 1).setOccupied(false);
@@ -163,10 +163,10 @@ public class BoardTestsExp {
     	
     	//case 2
     	board.getCell(1, 3).setOccupied(true);
-    	board.calcTargets(board.getCell(1, 3), 2);
+    	board.calcTargets(board.getCell(1, 3), 3);
     	targets = board.getTargets();
-    	assertTrue(!targets.contains(board.getCell(1, 1)));
-    	assertTrue(targets.contains(board.getCell(1, 1)));
+    	assertTrue(!targets.contains(board.getCell(1, 2)));
+    	assertTrue(targets.contains(board.getCell(1, 3)));
     }
     
     
@@ -176,7 +176,7 @@ public class BoardTestsExp {
     	board.getCell(1, 1).setInRoom(true);
     	board.getCell(1, 2).setOccupied(true);
     	
-    	board.calcTargets(board.getCell(0, 0), 3);
+    	board.calcTargets(board.getCell(0, 0), 2);
     	Set<TestBoardCell> targets = board.getTargets();
     	assertTrue(targets.contains(board.getCell(1, 1)));  //room
     	assertTrue(targets.contains(board.getCell(1, 2)));  //occupied
