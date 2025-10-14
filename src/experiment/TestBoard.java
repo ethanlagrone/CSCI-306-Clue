@@ -15,10 +15,12 @@ public class TestBoard {
     }
 
     public TestBoardCell getCell(int row, int column) {
+		return null;
         
     }
 
     public Set<TestBoardCell> getTargets() {
+		return null;
         
     }
 }

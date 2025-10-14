@@ -11,8 +11,8 @@ public class TestBoardCell {
     private Set<TestBoardCell> adjCells;
 
     public TestBoardCell(int row, int column) {
-        row = this.row;
-        column = this.column;
+        this.row = row;
+        this.column = column;
     }
 
     public void addAdjacency(TestBoardCell cell) {
