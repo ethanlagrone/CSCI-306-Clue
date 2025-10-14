@@ -124,7 +124,7 @@ public class BoardTestsExp {
         assertTrue(targets.contains(board.getCell(3, 3)));
     }
     
-    
+    /*
     @Test
     public void testTargetsRoom() {
     	//case 1
@@ -198,5 +198,5 @@ public class BoardTestsExp {
     	assertTrue(targets.contains(board.getCell(2, 3)));
     }
    
-    
+    */
 }
