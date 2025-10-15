@@ -18,13 +18,18 @@ public class TestBoardCell {
     }
 
     public void addAdjacency(TestBoardCell cell) {
+    	//do this
         adjCells.add(cell);
     }
 
     public Set<TestBoardCell> getAdjList() {
+    	//do this
         return adjCells;
     }
 
+    
+    
+    //getters and setters
     public void setInRoom(boolean b) {
         inRoom = b;
     }
