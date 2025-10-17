@@ -1,7 +1,6 @@
 package experiment;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 public class TestBoard {
@@ -29,13 +28,13 @@ public class TestBoard {
     		for(int j = 0; j < COLS; j++) {
     			TestBoardCell cell = grid[i][j];
     			
-    			if(i - 1 > 0) {
+    			if(i - 1 >= 0) {
     				cell.addAdjacency(grid[i-1][j]);
     			}
     			if(i + 1 < ROWS) {
     				cell.addAdjacency(grid[i+1][j]);
     			}
-    			if(j - 1 > 0) {
+    			if(j - 1 >= 0) {
     				cell.addAdjacency(grid[i][j-1]);
     			}
     			if(j+1 < COLS) {
@@ -45,16 +44,29 @@ public class TestBoard {
     	}
     }
 
-    public void calcTargets(TestBoardCell startCell, int pathlength) {
- 
+    public void calcTargets(TestBoardCell startCell, int numSteps) {
+    	//source: slides from clue path walkthrough
+    	for(TestBoardCell adjCell : startCell.getAdjList()) {
+    		if(visited.contains(adjCell)) {
+    			//do nothing
+    		} else {
+    			visited.add(adjCell);
+    			if(numSteps == 1) {
+    				targets.add(adjCell);
+    			} else {
+    				calcTargets(adjCell, numSteps-1);
+    			}
+    		}
+    		visited.remove(adjCell);
+    	}
     }
 
     public TestBoardCell getCell(int row, int column) {
-    	return new TestBoardCell(row, column);
+    	return this.getCell(row, column);
         
     }
 
     public Set<TestBoardCell> getTargets() {
-		return new HashSet<>();
+		return this.targets;
     }
 }

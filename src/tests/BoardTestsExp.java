@@ -124,6 +124,11 @@ public class BoardTestsExp {
         assertTrue(targets.contains(board.getCell(3, 3)));
     }
     
+    
+    
+    
+    //Dont worry about this, I misunderstood the last assignment but it should still be useful I think lol
+    //Delete this line before turn in
     /*
     @Test
     public void testTargetsRoom() {
