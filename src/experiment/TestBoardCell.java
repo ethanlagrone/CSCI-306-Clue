@@ -14,16 +14,15 @@ public class TestBoardCell {
     public TestBoardCell(int row, int column) {
         this.row = row;
         this.column = column;
-        adjCells = new HashSet<>();
+        //not needing sort so may as well use hashset
+        adjCells = new HashSet<TestBoardCell>();
     }
 
     public void addAdjacency(TestBoardCell cell) {
-    	//do this
         adjCells.add(cell);
     }
 
     public Set<TestBoardCell> getAdjList() {
-    	//do this
         return adjCells;
     }
 
