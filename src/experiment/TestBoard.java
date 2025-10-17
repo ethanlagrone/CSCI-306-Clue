@@ -62,7 +62,7 @@ public class TestBoard {
     }
 
     public TestBoardCell getCell(int row, int column) {
-    	return this.getCell(row, column);
+    	return grid[row][column];
         
     }
 
