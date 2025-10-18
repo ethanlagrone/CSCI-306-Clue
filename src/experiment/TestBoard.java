@@ -46,16 +46,12 @@ public class TestBoard {
 
     public void calcTargets(TestBoardCell startCell, int numSteps) {
     	//source: slides from clue path walkthrough
-		if (!visited.contains(startCell)) {
-			visited.add(startCell);
-		}
 		for(TestBoardCell adjCell : startCell.getAdjList()) {
     		if(visited.contains(adjCell)) {
     			//do nothing
     		} else {
     			visited.add(adjCell);
     			if(numSteps == 1) {
-    				visited.add(adjCell);
 					targets.add(adjCell);
     			} else {
     				calcTargets(adjCell, numSteps-1);
@@ -67,15 +63,13 @@ public class TestBoard {
 
     public TestBoardCell getCell(int row, int column) {
     	return grid[row][column];
-        
     }
 
-    public Set<TestBoardCell> getTargets() {
-		return this.targets;
-    }
-
-	public void clearSets() {
+    public Set<TestBoardCell> getTargets(TestBoardCell startCell, int numSteps) {
 		targets.clear();
 		visited.clear();
-	}
+		visited.add(startCell);
+		calcTargets(startCell, numSteps);
+		return targets;
+    }
 }
