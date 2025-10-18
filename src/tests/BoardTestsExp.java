@@ -105,9 +105,6 @@ public class BoardTestsExp {
 
       //case 6
         targets = board.getTargets(board.getCell(1, 1), 3);
-        for (TestBoardCell c : targets) {
-          System.out.println(c.getRow() + ", " + c.getColumn());
-        }
         assertEquals(6, targets.size());
         assertTrue(targets.contains(board.getCell(0, 3)));
         assertTrue(targets.contains(board.getCell(1, 0)));
