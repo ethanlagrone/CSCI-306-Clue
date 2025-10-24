@@ -50,13 +50,19 @@ public class TestBoard {
     		if(visited.contains(adjCell)) {
     			//do nothing
     		} else {
-    			visited.add(adjCell);
-    			if(numSteps == 1) {
-					targets.add(adjCell);
-    			} else {
-    				calcTargets(adjCell, numSteps-1);
-    			}
-				visited.remove(adjCell);
+    			if(adjCell.isOccupied()) {
+    	            // do nothing
+    	        } else {
+    	        	visited.add(adjCell);
+        			if(adjCell.isInRoom()) {
+        				targets.add(adjCell);
+        			} else if(numSteps == 1) {
+    					targets.add(adjCell);
+        			} else {
+        				calcTargets(adjCell, numSteps-1);
+        			}
+    				visited.remove(adjCell);
+    	        }
     		}
     	}
     }

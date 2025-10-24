@@ -1,13 +1,13 @@
 package tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import java.util.Set;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import experiment.*;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardTestsExp {
     
@@ -105,17 +105,20 @@ public class BoardTestsExp {
 
       //case 6
         targets = board.getTargets(board.getCell(1, 1), 3);
-        assertEquals(6, targets.size());
-        assertTrue(targets.contains(board.getCell(0, 3)));
+        assertEquals(8, targets.size());
+        assertTrue(targets.contains(board.getCell(0, 1)));
         assertTrue(targets.contains(board.getCell(1, 0)));
+        assertTrue(targets.contains(board.getCell(0, 3)));
         assertTrue(targets.contains(board.getCell(1, 2)));
+        assertTrue(targets.contains(board.getCell(2, 1)));
         assertTrue(targets.contains(board.getCell(2, 3)));
         assertTrue(targets.contains(board.getCell(3, 0)));
         assertTrue(targets.contains(board.getCell(3, 2)));
 
       //case 7
         targets = board.getTargets(board.getCell(1, 1), 4);
-        assertEquals(6, targets.size());
+        assertEquals(7, targets.size());
+        assertTrue(targets.contains(board.getCell(0, 0)));    
         assertTrue(targets.contains(board.getCell(0, 2)));
         assertTrue(targets.contains(board.getCell(1, 3)));
         assertTrue(targets.contains(board.getCell(2, 0)));
@@ -129,14 +132,12 @@ public class BoardTestsExp {
     
     //Dont worry about this, I misunderstood the last assignment but it should still be useful I think lol
     //Delete this line before turn in
-    /*
     @Test
     public void testTargetsRoom() {
     	//case 1
     	board.getCell(1, 1).setInRoom(true);
     	
-    	board.calcTargets(board.getCell(4, 1), 3);
-    	Set<TestBoardCell> targets = board.getTargets();
+    	Set<TestBoardCell> targets = board.getTargets(board.getCell(2, 1), 1);
     	assertTrue(targets.contains(board.getCell(1, 1)));
     	assertTrue(!targets.contains(board.getCell(2, 1)));
 
@@ -145,33 +146,30 @@ public class BoardTestsExp {
     	
     	
     	//case 2
-    	board.getCell(2, 1).setInRoom(true);
+    	board.getCell(3, 1).setInRoom(true);
     	
-    	board.calcTargets(board.getCell(1, 1), 4);
-    	targets = board.getTargets();
+    	targets = board.getTargets(board.getCell(2, 1), 1);
     	assertTrue(!targets.contains(board.getCell(2, 1))); //check not
-    	assertTrue(targets.contains(board.getCell(1, 1)));  //check yes
+    	assertTrue(targets.contains(board.getCell(3, 1)));  //check yes
     }
     
     
     @Test
     public void testTargetsOccupied() {
     	//case 1
-    	board.getCell(1, 1).setOccupied(true);
-    	board.calcTargets(board.getCell(0, 0), 2);
-    	Set<TestBoardCell> targets = board.getTargets();
-    	assertTrue(!targets.contains(board.getCell(0, 0)));
+    	board.getCell(2, 0).setOccupied(true);
+    	Set<TestBoardCell> targets = board.getTargets(board.getCell(0, 0), 2);
+    	assertTrue(!targets.contains(board.getCell(2, 0)));
     	assertTrue(targets.contains(board.getCell(1, 1)));
     	
-    	board.getCell(1, 1).setOccupied(false);
+    	board.getCell(2, 0).setOccupied(false);
     	
     	
     	//case 2
     	board.getCell(1, 3).setOccupied(true);
-    	board.calcTargets(board.getCell(1, 3), 3);
-    	targets = board.getTargets();
-    	assertTrue(!targets.contains(board.getCell(1, 2)));
-    	assertTrue(targets.contains(board.getCell(1, 3)));
+    	targets = board.getTargets(board.getCell(1, 1), 2);
+    	assertTrue(targets.contains(board.getCell(2, 2)));
+    	assertTrue(!targets.contains(board.getCell(1, 3)));
     }
     
     
@@ -181,11 +179,10 @@ public class BoardTestsExp {
     	board.getCell(1, 1).setInRoom(true);
     	board.getCell(1, 2).setOccupied(true);
     	
-    	board.calcTargets(board.getCell(0, 0), 2);
-    	Set<TestBoardCell> targets = board.getTargets();
+    	Set<TestBoardCell> targets = board.getTargets(board.getCell(0, 0), 2);
     	assertTrue(targets.contains(board.getCell(1, 1)));  //room
-    	assertTrue(targets.contains(board.getCell(1, 2)));  //occupied
-    	assertTrue(targets.contains(board.getCell(1, 3)));	//neither
+    	assertTrue(!targets.contains(board.getCell(1, 2)));  //occupied
+    	assertTrue(targets.contains(board.getCell(2, 0)));	//neither
     	
     	
     	board.getCell(1, 1).setInRoom(false);
@@ -196,12 +193,9 @@ public class BoardTestsExp {
     	board.getCell(2, 1).setInRoom(true);
     	board.getCell(2, 2).setOccupied(true);
     	
-    	board.calcTargets(board.getCell(0, 0), 3);
-    	targets = board.getTargets();
+    	targets = board.getTargets(board.getCell(0, 0), 3);
     	assertTrue(targets.contains(board.getCell(2, 1)));  //room
-    	assertTrue(targets.contains(board.getCell(2, 2)));  //occupied
-    	assertTrue(targets.contains(board.getCell(2, 3)));
+    	assertTrue(!targets.contains(board.getCell(2, 2)));  //occupied
+    	assertTrue(targets.contains(board.getCell(3, 0)));
     }
-   
-    */
 }
